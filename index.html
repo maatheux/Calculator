@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="assets/style/style.css" />
+        <link
+            rel="shortcut icon"
+            href="assets/img/calculator.png"
+            type="image/x-icon"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+            rel="stylesheet"
+        />
+        <title>Calculator</title>
+    </head>
+    <body>
+        <section class="container">
+            <h1>CALCULADORA</h1>
+            <div class="result-box">
+                <input type="text" class="display" readonly />
+            </div>
+            <div class="btn-container">
+                <div class="btn cancel">C</div>
+                <div class="btn num-btn symbol-btn">(</div>
+                <div class="btn num-btn symbol-btn">)</div>
+                <div class="btn num-btn symbol-btn">/</div>
+                <div class="btn num-btn just-num">7</div>
+                <div class="btn num-btn just-num">8</div>
+                <div class="btn num-btn just-num">9</div>
+                <div class="btn num-btn symbol-btn">*</div>
+                <div class="btn num-btn just-num">4</div>
+                <div class="btn num-btn just-num">5</div>
+                <div class="btn num-btn just-num">6</div>
+                <div class="btn num-btn symbol-btn">+</div>
+                <div class="btn num-btn just-num">1</div>
+                <div class="btn num-btn just-num">2</div>
+                <div class="btn num-btn just-num">3</div>
+                <div class="btn num-btn symbol-btn">-</div>
+                <div class="btn num-btn symbol-btn">.</div>
+                <div class="btn num-btn just-num">0</div>
+                <div class="btn backspace">&lArr;</div>
+                <div class="btn equal">=</div>
+            </div>
+        </section>
+
+        <script src="./node_modules/mathjs/lib/browser/math.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
