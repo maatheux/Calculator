@@ -16,12 +16,42 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
+.history {
+    position: absolute;
+    left: -15.5rem;
+    top: 2rem;
+    width: 22%;
+    height: 35.46rem;
+    display: flex;
+    justify-content: space-between;
+    transition: all 0.5s;
+}
+
+.history .history-container {
+    height: 100%;
+    width: 82%;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 0 4px 0 0;
+    transition: all 0.5s;
+}
+
+.history .clock-symbol {
+    height: 9.2%;
+    width: 18%;
+    align-self: flex-end;
+    border-radius: 0 4px 4px 0;
+    transition: all 0.5s;
+    background: url('../img/history.png') no-repeat center;
+    background-size: 2rem;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
 .container {
     width: 52%;
     padding: 2rem 2rem;
     border-radius: 4px;
     margin-top: 2rem;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     text-align: center;
@@ -77,4 +107,12 @@ body {
 
 .btn-container .btn:active {
     background-color: rgba(255, 255, 255, 0.3);
+}
+
+.container:after:hover {
+    transform: translateX(15rem);
+}
+
+.history:hover {
+    transform: translateX(15rem);
 }
