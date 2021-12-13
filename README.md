@@ -1,3 +1,3 @@
 ﻿# Calculator
 
-Link projeto: https://calculator-pnwsitv7k-marinhoo.vercel.app/
+Link projeto: calculator-marinhoo.vercel.app
