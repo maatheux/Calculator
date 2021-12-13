@@ -1,3 +1,3 @@
 ﻿# Calculator
 
-Link projeto: calculator-marinhoo.vercel.app
+Link projeto: calculator-marinhoo.vercel.app/
