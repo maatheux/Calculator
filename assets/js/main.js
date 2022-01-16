@@ -3,6 +3,10 @@
         const btn = document.querySelector('.btn-container');
         const display = document.querySelector('.display');
         const historyContainer = document.querySelector('.history-container');
+        const historyMedia = document.querySelector('.history-media');
+        const historyMediaContainer = document.querySelector(
+            '.history-media-container'
+        );
         let bool = true;
 
         this.start = () => {
@@ -12,25 +16,35 @@
         };
 
         const addHistory = function (evaluateStr) {
-            let el = document.createElement('div');
-            el.classList.add('element-evaluate');
-            let evaluatesHistory = document.createElement('div');
-            evaluatesHistory.classList.add('evaluates-history');
-            evaluatesHistory.innerText = evaluateStr;
-            let evaluateResult = document.createElement('div');
-            evaluateResult.innerText = Number(
-                math.evaluate(evaluateStr).toFixed(2)
-            );
+            let historyContainerArr = [historyContainer, historyMediaContainer];
+            for (value of historyContainerArr) {
+                let el = document.createElement('div');
+                el.classList.add('element-evaluate');
+                let evaluatesHistory = document.createElement('div');
+                evaluatesHistory.classList.add('evaluates-history');
+                evaluatesHistory.innerText = evaluateStr;
+                let evaluateResult = document.createElement('div');
+                evaluateResult.classList.add('evaluate-result');
+                evaluateResult.innerText = Number(
+                    math.evaluate(evaluateStr).toFixed(2)
+                );
 
-            el.appendChild(evaluatesHistory);
-            el.appendChild(evaluateResult);
-            el.style.display = 'flex';
-            el.style.justifyContent = 'space-between';
-            el.style.marginBottom = '1.2rem';
-            el.style.fontSize = '1.4rem';
-            el.style.cursor = 'pointer';
+                el.appendChild(evaluatesHistory);
+                el.appendChild(evaluateResult);
+                el.style.display = 'flex';
+                el.style.justifyContent = 'space-between';
+                el.style.marginBottom = '1.2rem';
+                el.style.fontSize = '1.4rem';
+                el.style.cursor = 'pointer';
 
-            historyContainer.insertBefore(el, historyContainer.firstChild);
+                evaluatesHistory.style.maxWidth = '5.5rem';
+                evaluatesHistory.style.overflow = 'hidden';
+
+                evaluateResult.style.maxWidth = '5.5rem';
+                evaluateResult.style.overflow = 'hidden';
+
+                value.insertBefore(el, value.firstChild);
+            }
         };
 
         const addEvaluateToDisplay = function () {
@@ -38,6 +52,14 @@
                 let elem = e.target;
                 if (elem.classList.contains('element-evaluate')) {
                     let elemChildNode = elem.childNodes;
+                    display.value = elemChildNode[0].innerText;
+                }
+                if (elem.classList.contains('evaluates-history')) {
+                    display.value = elem.innerText;
+                }
+                if (elem.classList.contains('evaluate-result')) {
+                    let elemParent = elem.parentNode;
+                    let elemChildNode = elemParent.childNodes;
                     display.value = elemChildNode[0].innerText;
                 }
             });
@@ -117,6 +139,10 @@
                     doEvaluate();
                     saveEvaluates();
                 }
+
+                if (element.classList.contains('history-button')) {
+                    historyMedia.classList.add('history-open');
+                }
             });
 
             document.addEventListener('keypress', e => {
@@ -131,6 +157,33 @@
 
                 if (e.keyCode > 48 && e.keyCode < 57) {
                     addNumberDisplay(e.key);
+                }
+            });
+
+            historyMediaContainer.addEventListener('click', e => {
+                let hmcEl = e.target;
+
+                if (hmcEl.classList.contains('element-evaluate')) {
+                    let elemChildNode = hmcEl.childNodes;
+                    display.value = elemChildNode[0].innerText;
+                    historyMedia.classList.remove('history-open');
+                }
+                if (hmcEl.classList.contains('evaluates-history')) {
+                    display.value = hmcEl.innerText;
+                    historyMedia.classList.remove('history-open');
+                }
+                if (hmcEl.classList.contains('evaluate-result')) {
+                    let elemParent = hmcEl.parentNode;
+                    let elemChildNode = elemParent.childNodes;
+                    display.value = elemChildNode[0].innerText;
+                    historyMedia.classList.remove('history-open');
+                }
+            });
+
+            historyMedia.addEventListener('click', e => {
+                hmEl = e.target;
+                if (hmEl.classList.contains('close-icon')) {
+                    historyMedia.classList.remove('history-open');
                 }
             });
         };
